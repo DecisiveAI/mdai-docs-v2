@@ -65,18 +65,24 @@ For examlpe, the logs from the pod named **xtra-noisy-logz-54c7877c4f-5svx8** sh
 > [!TIP]
 > You can instead use K9s for obverving the logs. To launch the K9s application, enter `k9s` in the terminal window where you launched the cluster (for the correct context). Use the arrow keys to select one of the log generators, then press **l** (lowercase letter l). Press ESC to the log window.
 
-
 ## Set Up a Collector
 
-1. From the **mdai-helm-chart repo's root directory**, start the sample operator using the [**MDAI Custom Resource Config**](../usages/configs/mdai_custom_resource_config.md).
+We’ve provided sample configurations for both the [**MDAI Custom Resource**](../usages/configs/mdai_custom_resource_config.md) and the [**OpenTelemetry Collector**](../usages/configs/otel_collector_sample_config.md) in our [**configs repository**](https://github.com/DecisiveAI/configs). For guidance on how these components work together, check out the [**configuration docs**](../usages/configs/_index.md).
+
+> 🗂️ For these examples, we will add the config files to the `files/` directory of the **mdai-helm-chart** repository for easy access.
+
+---
+
+1. Apply the OpenTelemetry Collector Configuration. From the root of the `mdai-helm-chart` repo, apply your [**OpenTelemetry Collector config**](../usages/configs/otel_collector_sample_config.md), or use our [**sample config**](https://github.com/DecisiveAI/configs/blob/main/mdai_v1_opentelemetry_collector_sample_config_0_6_0.yaml):
 
 ```
-kubectl apply -f ./files/example_mdai_custom_resource.yaml
+kubectl apply -f ./files/mdai_v1_opentelemetry_collector_sample_config_0_6_0.yaml
 ```
-2. From the **mdai-helm-chart repo's root directory**, start the sample collector using the [**MDAI OpenTelemetry Collector Sample Config**](../usages/configs/otel_collector_sample_config.md).
+
+2. Apply the MDAI Custom Resource Configuration. From the root of the `mdai-helm-chart` repo, apply your  [**MDAI Custom Resource Config**](../usages/configs/mdai_custom_resource_config.md), or use the provided [**sample config**](https://github.com/DecisiveAI/configs/blob/main/mdai_v1_mdaihub_sample_config_0_6_0.yaml):
 
 ```
-kubectl apply -f ./files/example_collector.yaml
+kubectl apply -f ./files/mdai_v1_mdaihub_sample_config_0_6_0.yaml
 ```
 
 Verify that the collector is running in Kubernetes.
