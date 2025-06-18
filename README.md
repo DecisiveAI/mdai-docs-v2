@@ -7,8 +7,8 @@ This is the source repository for the MyDecisive documentation. The documentatio
 The quick way to get started:
 
 1. Clone this repository with Git.
-2. Re-download the Relearn theme (see instructions in [Update the Theme](#update-the-theme))
-3. Install Hugo (extended edition).
+2. Update the Relearn theme (see instructions in [Update the Theme](#update-the-theme))
+3. Install [Hugo](https://gohugo.io/installation/) (extended edition). If you have Homebrew on Mac OS, use `brew install hugo`.
 4. Test changes locally by building and loading the site with Hugo.
 5. Create a PR to get your changes reviewed before they're merged.
 
@@ -35,7 +35,7 @@ assets/css/theme-relearn-dark.css:  --PRIMARY-color: rgba(19, 19, 19, 1); /* bra
 assets/css/theme-relearn-dark.css:  --SECONDARY-color: rgba(176, 98, 194, 1); /* brand secondary color; used for links; using MyDecisive brand light purple */
 ```
 
-These comments in these examples indicate that the color values were changed from the default.
+The comments in these examples indicate that the color values were changed from the default.
 
 ## Update the Theme
 
@@ -44,11 +44,11 @@ The Hugo [Relearn theme](https://github.com/McShelby/hugo-theme-relearn) is inst
 If you cloned this repo, the Relearn theme will need to be re-downloaded. Run:
 
 ```
-git module init
+git submodule init
 git submodule update --remote --merge
 ```
 
-To update it Relearn to the latest version, run:
+To update Relearn to the latest version, run:
 
 ```
 git submodule update --remote --merge
