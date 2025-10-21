@@ -17,7 +17,7 @@ In your `.bashrc` (or equivalent), add this to EOF
 export MDAI_LABS_DIR="$HOME/path/to/mdai-labs"
 
 # Set mdai alias
-alias mdai='"${MDAI_LABS_DIR%/}/cli/mdai.sh"'
+alias mdai="${MDAI_LABS_DIR%/}/cli/mdai.sh"
 ```
 
 You can now call `mdai` from your terminal and use it like you would any other CLI.
