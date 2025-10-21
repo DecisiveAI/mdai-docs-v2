@@ -23,10 +23,10 @@ alias mdai="${MDAI_LABS_DIR%/}/cli/mdai.sh"
 You can now call `mdai` from your terminal and use it like you would any other CLI.
 
 ```bash
-<!– mdai alias –>
+# mdai alias
 mdai <command> [command flags]
 
-<!-- alternative without alias -->
+# alternative without alias
 ./cli/mdai.sh <command> [command flags]
 ```
 
@@ -45,13 +45,27 @@ This command installs a local kind cluster and `mdai`.
   mdai install --version 0.8.6 -f values/overrides_0.8.6.yaml
   ```
 
+Add a role binding for the OpenTelemetry operator
+
+  ```bash
+  kubectl apply -f 0.8.6/k8s/otel_operator_rbac_patch.yaml
+  ```
+
 {{% /details %}}
 
 
 {{% details title="**Option 2: Install `mdai` without cert-manager**" closed="true" %}}
 
+This command installs a local kind cluster and `mdai`.
+
   ```bash
   mdai --no-cert-manager install --version 0.8.6 -f values/overrides_0.8.6.yaml
+  ```
+
+Add a role binding for the OpenTelemetry operator
+
+  ```bash
+  kubectl apply -f 0.8.6/k8s/otel_operator_rbac_patch.yaml
   ```
 
 {{% /details %}}
@@ -66,8 +80,16 @@ This command installs a local kind cluster and `mdai`.
     For this to work, your existing cluster must have `cert-manager` installed.
   {{< /callout >}}
 
+This command installs a local kind cluster and `mdai`.
+
   ```bash
   mdai install_mdai --version 0.8.6 -f values/overrides_0.8.6.yaml
+  ```
+
+Add a role binding for the OpenTelemetry operator
+
+  ```bash
+  kubectl apply -f 0.8.6/k8s/otel_operator_rbac_patch.yaml
   ```
 
 {{% /details %}}
@@ -75,8 +97,16 @@ This command installs a local kind cluster and `mdai`.
 
 {{% details title="**Option 2: Install `mdai` without cert-manager**" closed="true" %}}
 
+This command installs a local kind cluster and `mdai`.
+
   ```bash
   mdai --no-cert-manager install_mdai --version 0.8.6 -f values/overrides_0.8.6.yaml
+  ```
+
+Add a role binding for the OpenTelemetry operator
+
+  ```bash
+  kubectl apply -f 0.8.6/k8s/otel_operator_rbac_patch.yaml
   ```
 
 {{% /details %}}
