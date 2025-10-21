@@ -18,7 +18,7 @@ kind create cluster --name mdai
 
 This command installs `cert-manager`
 
-```bash
+```
 kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml
 kubectl wait --for=condition=Established crd/certificates.cert-manager.io --timeout=60s
 kubectl wait --for=condition=Ready pod -l app.kubernetes.io/instance=cert-manager -n cert-manager --timeout=60s
@@ -27,7 +27,7 @@ kubectl wait --for=condition=Available=True deploy -l app.kubernetes.io/instance
 
 This command installs `mdai`
 
-```bash
+```
 helm upgrade --install \
     mdai oci://ghcr.io/decisiveai/ \mdai-hub \
     --namespace mdai \
@@ -40,12 +40,20 @@ helm upgrade --install \
     --cleanup-on-fail
 ```
 
+Add a role binding for the OpenTelemetry operator
+
+```
+kubectl apply -f 0.8.6/k8s/otel_operator_rbac_patch.yaml
+```
+
 {{% /details %}}
 
 
 {{% details title="**Option 2: Without cert-manager**" closed="true" %}}
 
-```bash
+This command installs `mdai`
+
+```
 helm upgrade --install mdai-hub oci://ghcr.io/decisiveai/mdai-hub \
     --version 0.8.6 \
     --namespace mdai \
@@ -63,6 +71,12 @@ helm upgrade --install mdai-hub oci://ghcr.io/decisiveai/mdai-hub \
     --set mdai-operator.admissionWebhooks.autoGenerateCert.certPeriodDays=365 \
     --values values/overrides_0.8.6.yaml \
     --cleanup-on-fail
+```
+
+Add a role binding for the OpenTelemetry operator
+
+```
+kubectl apply -f 0.8.6/k8s/otel_operator_rbac_patch.yaml
 ```
 
 {{% /details %}}
